@@ -8,7 +8,7 @@ organization = os.environ['organizationid']
 api_key = os.environ['openai']
 
 
-country = "us"
+country = "ru"
 url = f"https://newsapi.org/v2/top-headlines?country={country}&apiKey={news}" 
 
 result = requests.get(url)
@@ -60,15 +60,11 @@ for response in responses:
 #print(songs)
 
 for i in range(len(responses)):
-  print(i+1, " News: ", responses[i])
-
-# Check if there are songs in the list and if the current index is within the range
-if songs and i < len(songs):
+  if songs and i < len(songs):
+    print(i+1, " News: ", responses[i])
     print("Song: ", songs[i]['name'])
     print("URL: ", songs[i]['preview_url'])
-else:
+  else:
+    print(i+1, " News: ", responses[i])
     print("No song found for this news headline.")
-
-print()
-    
-
+  print()
